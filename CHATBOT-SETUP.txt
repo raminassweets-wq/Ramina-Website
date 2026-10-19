@@ -1,0 +1,31 @@
+RAMINA'S SWEETS - CHATBOT / ADMIN MESSAGE SETUP
+
+FRESH INSTALL
+1. Put the ramina-sweets folder inside XAMPP htdocs.
+2. Start Apache and MySQL.
+3. Create the database named ramina_sweets.
+4. Import database/schema.sql and then database/sample-data.sql.
+5. Create the owner/admin account using tools/create-admin.php as described in docs/XAMPP-SETUP.md.
+6. Open the site in your browser. The customer chatbot appears at the bottom-right.
+7. Log in as the owner and open Owner > Customer messages to read and answer questions.
+
+EXISTING DATABASE
+1. Back up your database first.
+2. Keep any upgrade scripts already required by your current project version.
+3. Import database/upgrade-chat.sql ONCE.
+4. Replace the website files with this version.
+
+HOW IT WORKS
+- Every customer question is saved in MySQL.
+- The bot immediately answers common questions using built-in rules.
+- Questions the bot cannot answer are still sent to the owner/admin inbox.
+- The owner can reply from Owner > Customer messages.
+- The customer chat checks for new owner replies while it is open.
+- No external AI API key is required.
+
+Website/SDS alignment update (6 October 2026)
+- Help is now in the shared navigation.
+- The Help page includes a server-rendered chat form that works without JavaScript.
+- The floating widget still uses assets/chat.js as an enhancement.
+- The current automatic assistant is rule-based and local; no external AI/model provider or API key is required.
+- Demo social links now include Facebook, Instagram, TikTok, WhatsApp and Viber. Replace them with verified business URLs before launch.

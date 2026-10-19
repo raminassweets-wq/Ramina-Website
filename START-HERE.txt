@@ -1,0 +1,63 @@
+RAMINA'S SWEETS — FINAL RELEASE 2.0
+===================================
+
+THIS BUILD IS DESIGNED TO START ITSELF.
+
+LOCAL XAMPP
+1. Extract this folder as: C:\xampp\htdocs\ramina-sweets
+2. Start Apache and MySQL.
+3. Open: http://localhost/ramina-sweets/
+
+On a normal fresh XAMPP install, the website will create the `ramina_sweets`
+database, install its tables/sample catalogue and create the preconfigured owner
+account automatically. You do not have to import SQL manually.
+
+Owner login:
+http://localhost/ramina-sweets/admin/login.php
+
+Customer login:
+http://localhost/ramina-sweets/login.php
+
+The owner email/account requested for this project is already preconfigured. The
+owner password is stored only as a secure PHP password hash, not as readable text.
+
+LIVE HOSTING
+Upload the folder to a PHP 8.2+ host with MySQL/MariaDB, HTTPS and writable
+`storage/` + `images/products/`. The application accepts database settings from
+RAMINA_DB_HOST, RAMINA_DB_PORT, RAMINA_DB_NAME, RAMINA_DB_USER and
+RAMINA_DB_PASSWORD environment variables. If the configured DB account can
+create databases, first-run installation is automatic; otherwise the hosting
+provider must supply an existing database/account — this is a hosting requirement,
+not something a website can manufacture itself.
+
+EMAIL
+The business/owner Gmail address is already configured as the account and Reply-To
+identity. The website automatically tries an authorised SMTP connection first and,
+on a public server, the hosting provider's PHP mail service second. Failed messages
+are queued safely and retried automatically.
+
+Google does not accept an ordinary Gmail account password for this kind of SMTP
+login. If the host's mail service is unavailable and you specifically want Gmail to
+send the messages, Google must issue an App Password/OAuth authorisation. The final
+ZIP deliberately does not store the normal Gmail password in plaintext.
+
+PAYMENTS
+Cash, bank transfer and M-PAiSA ordering work without an external API and are
+owner-verified. On localhost, a safe TEST online-payment gateway demonstrates the
+full automatic Paid -> receipt flow without real money.
+
+Real automatic online card/PayPal payment is already implemented, but a live site
+can only charge money after the business has merchant credentials from its payment
+provider. No developer can legitimately embed working live merchant credentials
+that the merchant/provider has not issued. When valid PayPal credentials are
+supplied through environment/config values, the online option turns on and only
+provider-confirmed captures mark orders Paid.
+
+QUICK HEALTH CHECK (optional)
+C:\xampp\php\php.exe tools\system-check.php
+
+Everything controlled by the website itself is wired together in this release:
+separate admin/customer sessions, accounts, reset/verification, cart, stock-safe
+checkout, receipts, reviews, chatbot + owner replies, customer management, order
+management, email queue/log, reports/CSV, payment verification/refunds, responsive
+UI, privacy/terms, CSRF, prepared SQL and first-run installation.

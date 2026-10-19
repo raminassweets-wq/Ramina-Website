@@ -1,0 +1,10 @@
+DirectoryIndex index.php
+Options -Indexes
+
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^(config.*|README.*|START-HERE\.txt|VERSION\.txt|router\.php|.*\.(sql|md|cjs|log|json|zip|bak|ini))$">
+    Require all denied
+</FilesMatch>

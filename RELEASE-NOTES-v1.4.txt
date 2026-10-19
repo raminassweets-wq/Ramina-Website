@@ -1,0 +1,46 @@
+RAMINA'S SWEETS v1.4 - COMPLETE MODERN BUILD
+=============================================
+
+MAIN ADDITIONS
+- Forgot/reset password by expiring one-use email link.
+- Email verification and resend verification.
+- Older sessions are invalidated after password reset/change or account deactivation.
+- Email order confirmations, payment receipts, order/collection updates and receipt resend.
+- Local protected email outbox for XAMPP testing; SMTP configuration for real delivery.
+- Printable/save-to-PDF browser receipt.
+- Provider-controlled Online payment method.
+- Local TEST payment gateway for end-to-end classroom testing without real money.
+- PayPal Orders v2 sandbox/live adapter, server-side capture, verified webhooks,
+  idempotency, duplicate-event protection, amount/currency checks and full refunds.
+- Customer administration with Active/Inactive accounts and audit history.
+- Sales reports and safe CSV export.
+- Existing reviews, chatbot/admin replies, cart, stock, guest receipts and order workflows retained.
+
+FIRST-TIME INSTALL
+1. Create an empty MySQL/MariaDB database named ramina_sweets.
+2. Import database/schema.sql then database/sample-data.sql.
+3. Run tools/create-admin.php from the command line.
+4. Keep the default email transport = log and TEST payment mode for local testing.
+
+UPGRADING THE v1.3 WEBSITE
+1. BACK UP your current database and product images.
+2. Replace the PHP project files with this v1.4 build.
+3. Import database/upgrade-v1.4-modern.sql ONCE into the existing database.
+4. Run tools/system-check.php.
+
+REAL EMAIL
+Copy app/config.example.php to app/config.local.php and add SMTP credentials.
+Never commit or upload config.local.php publicly.
+
+REAL ONLINE PAYMENT
+The site works immediately in safe local TEST MODE. For PayPal sandbox/live, add a
+PayPal Business/Developer REST application's client ID, client secret, webhook ID,
+public HTTPS app URL, supported PayPal currency and approved FJD conversion rate to
+app/config.local.php. Test sandbox fully before changing paypal_mode to live.
+
+PayPal's ordinary payment currency list does not include FJD, so this build keeps
+store prices/receipts in FJD and lets the merchant configure the supported PayPal
+presentment currency and FJD conversion rate. Do not guess a live exchange rate.
+
+Detailed setup: docs/XAMPP-SETUP.md
+Testing checklist: docs/TESTING.md

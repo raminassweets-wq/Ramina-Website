@@ -1,0 +1,74 @@
+RAMINA'S SWEETS v1.5 — QUICK SETUP
+===================================
+
+A. UPGRADE FROM v1.4
+1. Back up your current ramina_sweets database in phpMyAdmin.
+2. Replace the old website files with this v1.5 folder.
+3. In phpMyAdmin select ramina_sweets.
+4. Import database/upgrade-v1.5-premium.sql ONCE.
+5. Open Command Prompt in C:\xampp\htdocs\ramina-sweets.
+6. Run:
+   C:\xampp\php\php.exe tools\system-check.php
+
+B. FRESH INSTALL
+1. Put this folder at C:\xampp\htdocs\ramina-sweets
+2. Start Apache + MySQL in XAMPP.
+3. Create database: ramina_sweets
+4. Import database/schema.sql
+5. Import database/sample-data.sql
+6. Create owner account:
+   C:\xampp\php\php.exe tools\create-admin.php
+
+C. CUSTOMER + OWNER AT SAME TIME
+Customer login:
+http://localhost/ramina-sweets/login.php
+
+Owner login:
+http://localhost/ramina-sweets/admin/login.php
+
+They now use DIFFERENT cookies. You can keep both logged in in different tabs of the same browser.
+
+D. REAL EMAIL (NOT THE LOCAL TEST OUTBOX)
+From Command Prompt:
+cd C:\xampp\htdocs\ramina-sweets
+C:\xampp\php\php.exe tools\setup-email.php
+
+Choose gmail, outlook or custom SMTP and enter your real sender account credentials.
+Then test:
+C:\xampp\php\php.exe tools\test-email.php YOUR_REAL_EMAIL@example.com
+
+You can also log in as owner and open:
+Admin > System & email
+Then send a real test email from the dashboard.
+
+Signed-in customers receive order emails at the EMAIL ON THEIR ACCOUNT.
+Password reset emails are also sent to that registered account email.
+
+E. MAIN URLS
+Storefront:
+http://localhost/ramina-sweets/
+
+Customer login:
+http://localhost/ramina-sweets/login.php
+
+Owner login:
+http://localhost/ramina-sweets/admin/login.php
+
+Owner system/email status:
+http://localhost/ramina-sweets/admin/settings.php
+
+F. PAYMENT
+Local TEST MODE remains available for safe demonstration.
+For real online payment, configure PayPal sandbox credentials in app/config.local.php first.
+Never put real API secrets into files you share publicly.
+
+PRECONFIGURED OWNER / EMAIL
+---------------------------
+Owner login email: ryanonlineshopping8989@gmail.com
+The owner password requested for this build is already stored as a secure password hash in the fresh-install and upgrade SQL.
+The same Gmail address is configured as the receipt / notification sender in app/config.local.php.
+
+IMPORTANT FOR GMAIL:
+Google may reject a normal Google-account password for SMTP. If Admin > System & Email shows authentication failed, enable 2-Step Verification for this Gmail account, create a Google App Password, and replace only the smtp_password value in app/config.local.php.
+Do not publish or submit app/config.local.php because it contains the SMTP credential.
+

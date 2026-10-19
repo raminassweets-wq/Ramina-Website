@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /app/
+Disallow: /database/
+Disallow: /storage/
+Disallow: /tools/

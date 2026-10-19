@@ -1,0 +1,38 @@
+RAMINA'S SWEETS v1.4 — IMPORTANT SETUP
+======================================
+
+NEW INSTALLATION
+1. Put this folder at C:\xampp\htdocs\ramina-sweets
+2. Start Apache + MySQL.
+3. Create MySQL database: ramina_sweets
+4. Import database/schema.sql
+5. Import database/sample-data.sql
+6. Run: C:\xampp\php\php.exe tools\create-admin.php
+7. Open: http://localhost/ramina-sweets/
+
+UPGRADING THE v1.3 SITE
+1. Back up your current MySQL database first.
+2. Copy this new website folder over/replace the v1.3 PHP files.
+3. In phpMyAdmin, select ramina_sweets and import:
+   database/upgrade-v1.4-modern.sql
+4. Run: C:\xampp\php\php.exe tools\system-check.php
+
+LOCAL EMAIL TESTING
+- Emails are generated into storage\mail by default.
+- This includes email verification, password-reset links, order receipts and payment receipts.
+- To send real emails, copy app/config.example.php to app/config.local.php and add SMTP settings.
+- Test real SMTP with:
+  C:\xampp\php\php.exe tools\test-email.php your-email@example.com
+
+LOCAL ONLINE PAYMENT TESTING
+- On localhost checkout includes Pay online (TEST MODE).
+- It moves NO real money but tests the complete automatic Paid + receipt workflow.
+
+REAL PAYPAL
+- Configure app/config.local.php with sandbox client ID/secret/webhook ID first.
+- Configure app_url to the HTTPS address.
+- Set paypal_currency to a PayPal-supported payment currency and set the business-approved FJD conversion rate.
+- Webhook endpoint: /payment-webhook.php
+- After sandbox acceptance, switch to live merchant credentials.
+
+READ docs/XAMPP-SETUP.md FOR THE COMPLETE WALKTHROUGH.

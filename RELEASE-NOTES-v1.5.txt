@@ -1,0 +1,61 @@
+RAMINA'S SWEETS v1.5 PREMIUM
+============================
+
+Main fixes
+----------
+1. Customer and owner logins now use separate PHP session cookies.
+   - Customer login: /login.php
+   - Owner login: /admin/login.php
+   - Both can remain logged in at the same time in the same browser.
+   - Logging out of one no longer logs out the other.
+
+2. Real SMTP email support upgraded.
+   - Password reset emails
+   - Email verification
+   - Order confirmations
+   - Payment receipts
+   - Order status/collection updates
+   - Owner can send a real test email from Admin > System & email.
+   - Delivery success/failure is recorded in email_delivery_log.
+   - Signed-in checkout always sends transactional order email to the email address on the customer account.
+
+3. Premium redesign.
+   - Modern sticky navigation and announcement bar
+   - Premium homepage/hero and trust indicators
+   - Collection cards, featured products, ordering steps and review spotlight
+   - Modern product cards, buttons, forms, tables and status badges
+   - Responsive mobile layouts
+   - Redesigned owner dashboard with metrics and system health
+   - New System & email admin page
+
+Real email setup
+----------------
+The website cannot contain somebody's private SMTP password in a shared ZIP.
+Run this once from the project folder:
+
+C:\xampp\php\php.exe tools\setup-email.php
+
+Then test:
+
+C:\xampp\php\php.exe tools\test-email.php your-real-email@example.com
+
+For Gmail, enter smtp.gmail.com / port 587 / TLS and use an App Password where your Google account requires it.
+The setup helper fills these values automatically when you choose gmail.
+
+Database upgrade from v1.4
+--------------------------
+Back up your database first, then import once:
+
+database\upgrade-v1.5-premium.sql
+
+Fresh install
+-------------
+Import database\schema.sql, then database\sample-data.sql.
+Do not also run upgrade-v1.5-premium.sql on a fresh v1.5 schema.
+
+Important production notes
+--------------------------
+- Keep app/config.local.php private. It contains SMTP/payment secrets.
+- Disable local demo payments before public launch.
+- Use HTTPS for a public deployment.
+- Test PayPal in sandbox before live mode.
